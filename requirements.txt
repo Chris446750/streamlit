@@ -1,0 +1,45 @@
+# ============================================================
+# AI 智能投资投研终端 — 依赖清单
+# 运行环境：Python 3.12（勿用 3.14，量化库 wheel 不兼容）
+# 安装：pip install -r requirements.txt
+# ============================================================
+
+# ---- 核心数值计算 ----
+numpy>=1.26.0,<2.0.0        # vectorbt/numba 兼容性锚点
+pandas>=2.1.0,<3.0.0
+
+# ---- 数据源（A股主力 + 可扩展）----
+akshare>=1.14.0             # A股默认数据源（免费，无需 token）
+tushare>=1.4.0              # A股备选（需 token，接口积分分级）
+yfinance>=0.2.40            # 美股/港股
+curl_cffi>=0.16             # yfinance 浏览器 TLS 伪装，绕开 Yahoo 限流（yfinance 自动检测）
+ccxt>=4.3.0                 # 加密货币
+
+# ---- AI 大模型（DeepSeek 兼容 OpenAI 协议）----
+openai>=1.40.0              # DeepSeek 官方推荐走 openai SDK
+pydantic>=2.7.0             # 输出 JSON 严格校验
+pydantic-settings>=2.3.0    # 配置管理（.env 读取）
+python-dotenv>=1.0.1        # .env 加载
+
+# ---- 回测（VectorBT）----
+vectorbt>=0.25.2            # 向量化回测引擎
+numba>=0.59.0,<0.61.0       # vectorbt 依赖，与 numpy 1.26 匹配
+
+# ---- Web 看板 ----
+streamlit>=1.35.0
+plotly>=5.20.0,<6.0.0       # vectorbt 1.0 主题引用 scattermapbox，plotly>=6 已移除该属性
+
+# ---- 信号推送 ----
+python-telegram-bot>=21.0   # Telegram Bot
+# SMTP 邮件用标准库 smtplib，无需额外依赖
+
+# ---- 存储 ----
+sqlalchemy>=2.0.30          # ORM（SQLite 默认 / PostgreSQL 可选）
+psycopg2-binary>=2.9.9      # 可选：PostgreSQL 驱动
+
+# ---- 工具 ----
+loguru>=0.7.2               # 结构化日志
+tenacity>=8.3.0             # 网络请求重试/指数退避
+requests>=2.32.0
+python-dateutil>=2.9.0
+pyyaml>=6.0

@@ -1,0 +1,8 @@
+# Streamlit 本地运行配置（项目级）
+# 作用：跳过首次运行的 Email 引导提示与遥测文案，保留浏览器自动打开（headless=false 默认）。
+
+[browser]
+gatherUsageStats = false
+
+[server]
+showEmailPrompt = false

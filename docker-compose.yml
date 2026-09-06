@@ -1,0 +1,18 @@
+# ============================================================
+# AI 智能投资投研终端 — 一键部署
+# 启动：docker-compose up -d --build
+# 访问：http://localhost:8501
+# 停止：docker-compose down
+# ============================================================
+services:
+  investment-terminal:
+    build: .
+    image: investment-terminal:latest
+    container_name: investment-terminal
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

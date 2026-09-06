@@ -1,0 +1,27 @@
+# ---- 环境与密钥 ----
+.env
+.venv/
+venv/
+env/
+
+# ---- Python 缓存 ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# ---- 数据与日志（保留 .gitkeep 以维持目录结构）----
+data/*
+!data/.gitkeep
+logs/*
+!logs/.gitkeep
+*.db
+*.sqlite3
+
+# ---- IDE / 系统 ----
+.idea/
+.vscode/
+.DS_Store
+
+# ---- 依赖锁文件（按团队约定决定是否提交）----
+requirements.lock
